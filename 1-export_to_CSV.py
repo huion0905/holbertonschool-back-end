@@ -22,18 +22,7 @@ if __name__ == '__main__':
         todos_response = requests.get(todos_url)
         todos = todos_response.json()
 
-        """Calculate the number of tasks completed and totals"""
-        total_tasks = len(todos)
-        done_tasks = sum(task['completed'] for task in todos)
-
-        """Print progress information"""
-        message = (
-            f"Employee {employee_name} is done with tasks"
-            f"({done_tasks}/{total_tasks}):"
-        )
-        print(message)
-
-        """Print the titles of completed tasks"""
-        for task in todos:
-            if task['completed']:
-                print(f"\t {task['title']}")
+        with open(f"{employee_id}.csv", 'w', newline='') as csvfile:
+            csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+            for task in todos:
+                csvwriter.writerow([employee_id, username, task['completed'], task['title']])
