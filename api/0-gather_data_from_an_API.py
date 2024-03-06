@@ -28,8 +28,8 @@ def main(employee_id):
     employee_name = user_data['name']
 
     # Print progress information
-    print(f"Employee {employee_name} is done with tasks(
-          {completed_tasks}/{all_tasks})")
+    print(f"Employee {employee_name} is done with tasks("
+          f"{completed_tasks}/{all_tasks}):")
     for task in all_data:
         if task['completed']:
             print(f"\t {task['title']}")
