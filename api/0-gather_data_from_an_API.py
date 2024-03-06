@@ -33,6 +33,7 @@ def main(employee_id):
         if task['completed']:
             print(f"\t {task['title']}")
 
+
 if __name__ == '__main__':
     if len(argv) == 2:
         try:
