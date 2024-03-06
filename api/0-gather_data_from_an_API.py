@@ -18,22 +18,20 @@ def main(employee_id):
     user_data = user_res.json()
 
     # Obtain employee tasks
-    all_url = f"{base_url}/all?userId={employee_id}"
-    all_res = requests.get(all_url)
-    all_data = all_res.json()
+    todos_url = f"{base_url}/todos?userId={employee_id}"  # Modificado de all a todos
+    todos_res = requests.get(todos_url)
+    todos_data = todos_res.json()
 
     # Calculate progress
-    all_tasks = len(all_data)
-    completed_tasks = len([task for task in all_data if task['completed']])
+    total_tasks = len(todos_data)
+    completed_tasks = len([task for task in todos_data if task['completed']])
     employee_name = user_data['name']
 
     # Print progress information
-    print(f"Employee {employee_name} is done with tasks("
-          f"{completed_tasks}/{all_tasks}):")
-    for task in all_data:
+    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+    for task in todos_data:
         if task['completed']:
             print(f"\t {task['title']}")
-
 
 if __name__ == '__main__':
     if len(argv) == 2:
@@ -43,4 +41,4 @@ if __name__ == '__main__':
         except ValueError:
             print("Please provide an integer for the employee ID.")
     else:
-        print("Usage python3 script.py <employee_id>")
+        print("Usage: python3 script.py <employee_id>")
