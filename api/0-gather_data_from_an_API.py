@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This script collects information about an employee's task list process using an APIREST."""
 import requests
 from sys import argv
 
