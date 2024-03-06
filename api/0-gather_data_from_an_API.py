@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This script collects information about an employee's
-task list process using an APIREST.
+task list process using a REST API.
 """
 
 import requests
@@ -9,7 +9,7 @@ from sys import argv
 
 
 def main(employee_id):
-    """API base URL."""
+    """Main function to gather data from the API."""
     base_url = "https://jsonplaceholder.typicode.com"
 
     # Obtain employee data
