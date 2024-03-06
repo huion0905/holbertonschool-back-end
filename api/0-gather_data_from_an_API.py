@@ -18,7 +18,7 @@ def main(employee_id):
     user_data = user_res.json()
 
     # Obtain employee tasks
-    todos_url = f"{base_url}/todos?userId={employee_id}"  # Modificado de all a todos
+    todos_url = f"{base_url}/todos?userId={employee_id}"
     todos_res = requests.get(todos_url)
     todos_data = todos_res.json()
 
@@ -28,7 +28,8 @@ def main(employee_id):
     employee_name = user_data['name']
 
     # Print progress information
-    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{total_tasks}):")
+    print(f"Employee {employee_name} is done with tasks("
+          f"{completed_tasks}/{total_tasks}):")
     for task in todos_data:
         if task['completed']:
             print(f"\t {task['title']}")
