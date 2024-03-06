@@ -1,38 +1,35 @@
 #!/usr/bin/python3
 """
-This script collects information about an employee's
-task list process using a REST API.
+Script to export data into the CSV format.
 """
 
 import requests
+import csv
 from sys import argv
 
 
 def main(employee_id):
-    """Main function to gather data from the API."""
+    """Main function to gather data from the API and save it to a CSV file"""
     base_url = "https://jsonplaceholder.typicode.com"
 
     # Obtain employee data
     user_url = f"{base_url}/users/{employee_id}"
     user_res = requests.get(user_url)
     user_data = user_res.json()
+    username = user_data['username']
 
     # Obtain employee tasks
     todos_url = f"{base_url}/todos?userId={employee_id}"
     todos_res = requests.get(todos_url)
     todos_data = todos_res.json()
 
-    # Calculate progress
-    total_tasks = len(todos_data)
-    completed_tasks = len([task for task in todos_data if task['completed']])
-    employee_name = user_data['name']
+    # Create a CSV file and write the data
+    with open(f"{employee_id}.csv", 'w', newline='') as csvfile:
+        task_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
 
-    # Print progress information
-    print(f"Employee {employee_name} is done with tasks("
-          f"{completed_tasks}/{total_tasks}):")
-    for task in todos_data:
-        if task['completed']:
-            print(f"\t {task['title']}")
+        # Write each task to the CSV
+        for task in todos_data:
+            task_writer.writerow([employee_id, username, task['completed'], task['title']])
 
 
 if __name__ == '__main__':
