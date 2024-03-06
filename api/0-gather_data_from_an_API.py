@@ -8,9 +8,7 @@ from sys import argv
 
 
 def main(employee_id):
-    """
-    API base URL.
-    """
+    """API base URL."""
     base_url = "https://jsonplaceholder.typicode.com"
 
     # Obtain employee data
@@ -28,13 +26,13 @@ def main(employee_id):
     completed_tasks = len([task for task in all_data if task['completed']])
     employee_name = user_data['name']
 
-    #Print progress information
+    # Print progress information
     print(f"Employee {employee_name} is done with tasks({completed_tasks}/{all_tasks}):")
     for task in all_data:
         if task['completed']:
             print(f"\t {task['title']}")
 
-if __name__=='__main__':
+if __name__ == '__main__':
     if len(argv) == 2:
         try:
             employee_id = int(argv[1])
