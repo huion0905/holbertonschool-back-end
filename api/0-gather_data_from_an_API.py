@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This script collects information about an employee's task list process using an APIREST.
+This script collects information about an employee's
+task list process using an APIREST.
 """
 
 import requests
@@ -27,10 +28,12 @@ def main(employee_id):
     employee_name = user_data['name']
 
     # Print progress information
-    print(f"Employee {employee_name} is done with tasks({completed_tasks}/{all_tasks}):")
+    print(f"Employee {employee_name} is done with tasks(
+          {completed_tasks}/{all_tasks})")
     for task in all_data:
         if task['completed']:
             print(f"\t {task['title']}")
+
 
 if __name__ == '__main__':
     if len(argv) == 2:
@@ -40,4 +43,4 @@ if __name__ == '__main__':
         except ValueError:
             print("Please provide an integer for the employee ID.")
     else:
-        print("Usage: python3 script.py <employee_id>")
+        print("Usage python3 script.py <employee_id>")
