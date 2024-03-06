@@ -24,5 +24,5 @@ if __name__ == '__main__':
 
         with open(f"{employee_id}.csv", 'w', newline='') as csvfile:
             csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-            for task in todos:
+            for task in todo:
                 csvwriter.writerow([employee_id, username, task['completed'], task['title']])
