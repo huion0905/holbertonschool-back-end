@@ -4,7 +4,7 @@ This script collects information about an employee's
 task list process using a REST API.
 """
 
-import requests # type: ignore
+import requests  # type: ignore
 from sys import argv
 
 
