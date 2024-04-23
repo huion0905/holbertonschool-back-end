@@ -19,4 +19,4 @@ if __name__ == "__main__":
     print(
         f"Employee {user} is done with tasks({len(done_taks)}/{len(todos)}):")
     for todo in done_taks:
-        print(f"\t {todo.get('title')}")
+        print("\t {}".format(todo.get('title')))
