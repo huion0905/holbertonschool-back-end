@@ -29,7 +29,8 @@ def main(employee_id):
 
         # Write each task to the CSV
         for task in todos_data:
-            task_writer.writerow([employee_id, username, task['completed'], task['title']])
+            task_writer.writerow([employee_id, username,
+                                  task['completed'], task['title']])
 
 
 if __name__ == '__main__':
